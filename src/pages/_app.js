@@ -1,6 +1,6 @@
-import '@/styles/globals.css'
-import '@/styles/stylesfooter.css'
+import "@/styles/globals.css";
+import "@/styles/stylesfooter.css";
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }
