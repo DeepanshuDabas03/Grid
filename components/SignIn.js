@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Papa from 'papaparse';
 import { useRouter } from 'next/router';
 import { setCookie } from 'nookies';
+import Cookies from 'js-cookie';
 import Typewriter from 'typewriter-effect';
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -11,25 +12,27 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/Feviews1.csv');
+    const response = await fetch('/Feviews2.csv');
     const text = await response.text();
     const { data } = Papa.parse(text, { header: true });
     console.log(response)
     // Verify credentials
-    const user = data.find((entry) => entry.Id === username); // Change this line
+    const user = data.find((entry) => entry.UserId === username); // Change this line
     console.log(user)
-    // if (user) { // Make sure to add Password field to your CSV or change the field name
-    //   // Set a session cookie
-    //   setCookie(null, 'user', JSON.stringify(user), {
-    //     maxAge: 3600, // Cookie expires in 1 hour
-    //     path: '/',
-    //   });
+    if (user && password == 'hello') { 
+      setCookie(null, 'user', JSON.stringify(user), {
+        maxAge: 3600,
+        path: '/collections',
+      });
+      Cookies.set('myCookie', username);
+      console.log(Cookies.get('myCookie'))
 
-    //   router.push('/dashboard'); // Redirect to the dashboard or protected page
-    // } else {
+
+      router.push('/collections'); // Redirect to the dashboard or protected page
+    } else {
       
-    //   alert('Invalid username or password.');
-    // }
+      alert('Invalid username or password.');
+    }
   };
   
 

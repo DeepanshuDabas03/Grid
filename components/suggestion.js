@@ -1,4 +1,6 @@
 
+import { useRouter } from 'next/router';
+
 const products = [
     {
       id: 1,
@@ -11,8 +13,21 @@ const products = [
     },
     // More products...
   ]
+  import React from 'react'
   
-  export default function SuggestItem() {
+  const suggestion = () => {
+    const router = useRouter();
+    const authToken = Cookies.get('myCookie');
+    console.log(authToken)
+    // // Check authentication status
+    // const isAuthenticated = !!authToken;
+    // console.log(Cookies.get('myCookie')); // Add the missing closing parenthesis here
+  
+    // if (!isAuthenticated) {
+    //   // Redirect to the login page if not authenticated
+    //   router.replace('/login');
+    //   return null; // Return null to prevent rendering
+    // }
     return (
       <div className="bg-black">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -47,4 +62,6 @@ const products = [
       </div>
     )
   }
+  
+  export default suggestion
   

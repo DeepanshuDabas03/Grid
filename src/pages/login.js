@@ -12,9 +12,7 @@ const links = [
 export default function SignIn() {
   return (
     <div>
-      <NavBar />
-      <Sign />
-      <Footer links={links} companyInfo={companyInfo} />
+      <Sign/>
     </div>
   );
 }

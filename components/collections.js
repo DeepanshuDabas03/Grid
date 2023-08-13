@@ -1,3 +1,6 @@
+import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
+
 const callouts = [
   {
     name: "Desk and Office",
@@ -28,6 +31,18 @@ const callouts = [
 ];
 
 export default function Collections() {
+  const router = useRouter();
+    const authToken = Cookies.get('myCookie');
+    console.log(authToken)
+    // // Check authentication status
+    const isAuthenticated = !!authToken;
+    console.log(Cookies.get('myCookie')); // Add the missing closing parenthesis here
+    console.log(isAuthenticated)
+    if (!isAuthenticated) {
+      // Redirect to the login page if not authenticated
+      router.replace('/login');
+      return null; // Return null to prevent rendering
+    }
   return (
     <div className="bg-black-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

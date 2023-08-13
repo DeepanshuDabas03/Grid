@@ -2,8 +2,10 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import NavBar from "../../components/Header";
 import Footer from "../../components/Footer";
+
 import Collections from "../../components/collections";
 import SuggestItem from "../../components/suggestion";
+import Login from "./login.js"
 const inter = Inter({ subsets: ["latin"] });
 const links = [
   { url: "/about", text: "About" },
@@ -15,8 +17,8 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      <Collections />
-      <SuggestItem />
+      {/* <Collections /> */}
+      <Login/>
       <Footer links={links} companyInfo={companyInfo} />
     </div>
   );
