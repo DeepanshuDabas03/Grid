@@ -65,7 +65,7 @@ export default function Example() {
                         aria-current={item.current ? "page" : undefined}
                       >
                         <div className="flex ">
-                          <img className="h-8 w-8 " src={item.img} alt="" />
+                          <img id="abcd"  src={item.img} alt="" />
                           <span className="ml-2"></span>
                           {item.name}
                         </div>
