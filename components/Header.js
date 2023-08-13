@@ -37,15 +37,15 @@ export default function Example() {
                     alt="Your Company"
                   />
                 </div>
-                <div class="container" id="searchbar">
-                  <form class="d-flex " role="search">
+                <div className="container" id="searchbar">
+                  <form className="d-flex " role="search">
                     <input
-                      class="form-control me-2"
+                      className="form-control me-2"
                       type="search"
                       placeholder="Search for products and more"
                     />
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="submit"
                     ></button>
                   </form>
