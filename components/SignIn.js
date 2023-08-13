@@ -54,7 +54,7 @@ const LoginForm = () => {
       </div>
       
       {/* Right Side */}
-      <div className="w-1/3 flex justify-center items-center">
+      <div className="w-1/3 flex text-black justify-center items-center">
         <form onSubmit={handleSubmit} className="grid grid-cols-1">
           <div className="mb-4">
             <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">
