@@ -1,25 +1,37 @@
 import { useEffect, useState } from 'react';
 import Papa from 'papaparse';
+import Cookies from 'js-cookie';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export default function Home() {
-  const [topNData, setTopNData] = useState([]);
   const [csvData, setCSVData] = useState([]);
+  const [userTopNData, setUserTopNData] = useState([]);
 
   useEffect(() => {
-    // Fetch data from the JSON file in the public folder
-    fetch('/top_n.json')
-      .then((response) => response.json())
-      .then((data) => setTopNData(data))
-      .catch((error) => console.error('Error fetching data:', error));
-
     // Load and parse CSV data
     async function loadCSVData() {
       const response = await fetch('/Feviews2.csv'); // Adjust the file path
-      console.log(response)
-      // const text = await response.text();
-      // setCSVData(Papa.parse(text, { header: true, dynamicTyping: true }).data);
+      const text = await response.text();
+      setCSVData(Papa.parse(text, { header: true, dynamicTyping: true }).data);
     }
     loadCSVData();
+  }, []);
+
+  useEffect(() => {
+    // Retrieve the userId from the cookie
+    const userIdFromCookie = Cookies.get('myCookie');
+    
+    // Fetch data from the JSON file in the public folder
+    fetch('/top_n.json')
+      .then((response) => response.json())
+      .then((data) => {
+        // Filter data based on the userId
+        const userTopN = data[userIdFromCookie] || [];
+        setUserTopNData(userTopN);
+      })
+      .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
   function getProductName(productId) {
@@ -27,26 +39,71 @@ export default function Home() {
     return product ? product.ProductName : 'Unknown Product';
   }
 
+  function getProductInfo(productId) {
+    const product = csvData.find((item) => item.ProductId === productId);
+    if (product) {
+      return `${product.Brand} - ${product.ProductName}`;
+    } else {
+      return 'Unknown Brand - Unknown Product';
+    }
+  }
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true, // Auto-advance slides
+    autoplaySpeed: 2000, // Time between slide transitions (in milliseconds)
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
   return (
-    <div>
-      <h1>Top N Recommendations</h1>
-      <ul>
-        {Object.entries(topNData).map(([userId, ratings]) => (
-          <li key={userId}>
-            <strong>User ID: {userId}</strong>
-            <ul>
-              {ratings.map(([productId, rating]) => (
-                <li key={productId}>
-                  Product Name: {getProductName(productId)}, Rating: {rating}
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
+    <div className="bg-black py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold text-white mb-8">Top N Recommendations</h1>
+        <Slider {...settings}>
+          {userTopNData.map(([productId, rating]) => (
+            <div key={productId} className="px-2">
+              <div className="bg-blue-900 p-4 rounded-lg shadow-md">
+                <h3 className="text-lg font-semibold text-white mb-2">{getProductName(productId)}</h3>
+                <p className="text-gray-300">{getProductInfo(productId)}</p>
+                <p className="font-bold mt-2 text-white">Rating: {rating}</p>
+                <div className="mt-4 space-x-2">
+                  <button className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">
+                    View
+                  </button>
+                  <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-400">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 }
+
+
+
+
+
 
 
 

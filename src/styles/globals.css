@@ -1,6 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Home.css */
+
+/* Product Card Styling */
+.product-card {
+  background-color: yellow;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 0 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-content {
+  text-align: center;
+}
+
+.product-name {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.product-brand {
+  color: gray;
+}
+
+.product-rating {
+  font-weight: bold;
+}
+
+/* Button Styling */
+.product-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.view-button,
+.add-to-cart-button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.view-button:hover,
+.add-to-cart-button:hover {
+  background-color: #555;
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
