@@ -16,7 +16,6 @@ export default function OrderHistory() {
           // Parse CSV data
           const parsedData = parse(data, { header: true }).data;
           const filteredData = parsedData.filter(row => row.UserId === userId);
-          console.log(filteredData)
           setOrderHistory(filteredData);
         })
         .catch(error => console.error(error));
@@ -24,15 +23,24 @@ export default function OrderHistory() {
   }, []);
 
   return (
-    <div>
-      <h1>Order History</h1>
-      <ul>
-        {orderHistory.map((order, index) => (
-          <li key={index}>
-            Product ID: {order.ProductId}, Product Name: {order.Product_name}
-          </li>
-        ))}
-      </ul>
+    <div className="p-8">
+      <h1 className="text-2xl font-bold mb-4">Order History</h1>
+      <table className="min-w-full divide-y divide-gray-200 text-black">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="px-4 py-2">Product ID</th>
+            <th className="px-4 py-2">Product Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orderHistory.map((order, index) => (
+            <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+              <td className="px-4 py-2 text-black">{order.ProductId}</td>
+              <td className="px-4 py-2 text-black">{order.Product_name}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
