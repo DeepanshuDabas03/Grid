@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import NavBar from "../../components/Header";
 import Footer from "../../components/Footer";
-
+import Previous from './previous.js'
 import Collections from "../../components/collections";
 import SuggestItem from "../../components/suggestion";
 import Login from "./login.js"
