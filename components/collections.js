@@ -8,6 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 export default function Home() {
   const [csvData, setCSVData] = useState([]);
   const [userTopNData, setUserTopNData] = useState([]);
+  const [recommendedProducts, setRecommendedProducts] = useState([]);
 
   useEffect(() => {
     // Load and parse CSV data
@@ -82,6 +83,27 @@ export default function Home() {
       return 'Unknown Brand - Unknown Product';
     }
   }
+  async function fetchRecommendations(product_id) {
+    try {
+        const response = await fetch('http://127.0.0.1:9010/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ product_id: product_id }),
+        });
+
+        const data = await response.json();
+        console.log('Recommendations:', data);
+        setRecommendedProducts(data); // Update the recommended products state
+
+    } catch (error) {
+        console.error('Error fetching recommendations:', error);
+    }
+}
+
+  
+
 
   const settings = {
     dots: true,
@@ -128,7 +150,10 @@ export default function Home() {
                     View
                   </button>
 
-                  <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-400">
+                  <button
+                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-400"
+                    onClick={() => fetchRecommendations(productId)} // Call fetchRecommendations on button click
+                  >
                     Add to Cart
                   </button>
                 </div>
@@ -136,6 +161,15 @@ export default function Home() {
             </div>
           ))}
         </Slider>
+
+        <div>
+          <h2>Recommended Products:</h2>
+          <ul>
+            {recommendedProducts.map((product, index) => (
+              <li key={index}>{product}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
