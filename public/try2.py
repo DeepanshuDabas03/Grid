@@ -41,7 +41,7 @@ def predict():
         return df2['ProductId'].iloc[movie_indices].tolist()
 
 
-    recommendations = get_recommendations(306)
+    recommendations = get_recommendations(product_id)
     product_names = [products_list.loc[products_list['ProductId'] == pid, 'product_name'].values[0] for pid in recommendations]
     return jsonify(product_names)
 if __name__ == '__main__':
