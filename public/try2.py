@@ -33,7 +33,7 @@ def predict():
     cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
     indices = pd.Series(df2.index, index=df2['ProductId']).drop_duplicates()
     def get_recommendations(product_id, cosine_sim=cosine_sim):
-        idx = indices[product_id]  # Use the mapped index from indices
+        idx = indices[product_id] -1 # Use the mapped index from indices
         sim_scores = list(enumerate(cosine_sim[idx]))
         sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
         sim_scores = sim_scores[1:11]
