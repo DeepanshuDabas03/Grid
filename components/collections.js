@@ -91,7 +91,7 @@ export default function Home() {
   async function fetchRecommendations(product_id) {
     try {
       console.log("Product ID:", product_id);
-      const response = await fetch("http://127.0.0.1:9010/predict", {
+      const response = await fetch("https://organic-train-xgwrjqj45w6267qw-9010.app.github.dev/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
