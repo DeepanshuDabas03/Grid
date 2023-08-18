@@ -95,9 +95,6 @@ def predict():
     return jsonify(product_names)
 
 
-and this is my code
-
-
 
 
 
