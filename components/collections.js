@@ -93,7 +93,8 @@ export default function Home() {
   }
   async function fetchRecommendations(product_id) {
     try {
-      const response = await fetch("http://127.0.0.1:9010/predict", {
+      console.log("Product ID:", product_id);
+      const response = await fetch("https://shiny-palm-tree-p5r7xqx9x5phrg95-9010.app.github.dev/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
