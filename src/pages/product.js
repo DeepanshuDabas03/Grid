@@ -23,7 +23,7 @@ const Product = () => {
   const [recommendedProducts, setRecommendedProducts] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false); // Add isLoading state
-  let val;
+  const [val, setVal] = useState(null);
   async function recProduct(ProductId) {
     const response = await fetch("/ProductsList.csv");
     const csvText = await response.text();
@@ -113,9 +113,10 @@ const Product = () => {
     }
   }, [relatedProducts]);
   useEffect(() => {
-    if (isLoading) {
+    console.log(val);
+    if (isLoading && val) {
       setProduct({
-        ProductId: val.ProductId,
+        ProductId: val.id,
         name: val.name,
         images: val.images,
         description: val.description,
@@ -125,7 +126,14 @@ const Product = () => {
   }, [isLoading]);
   useEffect(() => {
     if (id) {
-      val = getProduct(id);
+      const fetchProduct = async () => {
+        if (id) {
+          const v = await getProduct(id); // Await the promise resolution
+          setVal(v);
+        }
+      };
+
+      fetchProduct();
     }
   }, [id]);
   if (!product) {
