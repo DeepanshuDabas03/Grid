@@ -14,21 +14,7 @@ export default function Home() {
   const [product_ids, setProduct_ids] = useState([]); // Add isLoading state
   const [relatedProducts, setRelatedProducts] = useState([]);
 
-  useEffect(() => {
-    // Load and parse CSV data
-    async function loadCSVData() {
-      try {
-        const response = await fetch("/OrderHistory.csv");
-        const text = await response.text();
-        setCSVData(
-          Papa.parse(text, { header: true, dynamicTyping: true }).data
-        );
-      } catch (error) {
-        console.error("Error loading CSV data:", error);
-      }
-    }
-    loadCSVData();
-  }, []);
+
   useEffect(() => {
     setIsLoading(true);
   }, [userTopNData]);
