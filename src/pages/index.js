@@ -6,6 +6,7 @@ import Previous from './previous.js'
 import Collections from "../../components/collections";
 import SuggestItem from "../../components/suggestion";
 import Login from "./login.js"
+import { useRouter } from "next/router";
 const inter = Inter({ subsets: ["latin"] });
 const links = [
   { url: "/about", text: "About" },
@@ -15,6 +16,7 @@ const links = [
 const companyInfo = "Copyright © 2023 Your Company";
 export default function Home() {
   return (
+    
     <div>
       <NavBar />
       {/* <Collections /> */}

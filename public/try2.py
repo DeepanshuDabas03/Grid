@@ -13,7 +13,7 @@ products_list = pd.read_csv("ProductsList.csv")
 def predict():
     data = request.get_json()
     product_id = data.get('product_id')
-
+    product_id = int(product_id)
     # Load product information from OrderHistory.csv based on product_id
     product_info = products_list[products_list['ProductId'] == product_id].iloc[0]
     pd.concat([order_history, product_info], ignore_index=True)
@@ -34,6 +34,7 @@ def predict():
     indices = pd.Series(df2.index, index=df2['ProductId']).drop_duplicates()
     def get_recommendations(product_id, cosine_sim=cosine_sim):
         idx = indices[product_id] -1 # Use the mapped index from indices
+        print(idx)
         sim_scores = list(enumerate(cosine_sim[idx]))
         sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
         sim_scores = sim_scores[1:11]
@@ -42,7 +43,8 @@ def predict():
 
 
     recommendations = get_recommendations(product_id)
-    product_names = [products_list.loc[products_list['ProductId'] == pid, 'product_name'].values[0] for pid in recommendations]
-    return jsonify(product_names)
+   
+
+    return jsonify(recommendations)
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=9010, debug=True)

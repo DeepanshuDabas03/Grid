@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Papa from "papaparse";
 import Cookies from "js-cookie";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [csvData, setCSVData] = useState([]);
@@ -66,9 +67,9 @@ export default function Home() {
             let productImage = productInfo ? productInfo.image : "";
             const nn = productImage.split(",");
             productImage = nn[0];
-            productImage= productImage.replace('"', "");
-            productImage= productImage.replace('"', "");
-            productImage= productImage.replace('[', "");
+            productImage = productImage.replace('"', "");
+            productImage = productImage.replace('"', "");
+            productImage = productImage.replace("[", "");
             return { ProductId, Rating, productName, productImage };
           }
         );
@@ -159,13 +160,20 @@ export default function Home() {
                       Rating: {Rating}
                     </p>
                     <div className="mt-4 space-x-2">
-                      <button className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">
-                        View
-                      </button>
+                      <Link
+                        href={{
+                          pathname: "/product",
+                        }}
+                        as={`/product?name=${productName} &id=${ProductId}`}
+                      >
+                        <button className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">
+                          View
+                        </button>
+                      </Link>
 
                       <button
                         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-400"
-                        onClick={() => fetchRecommendations(ProductId)} // Call fetchRecommendations on button click
+                        // onClick={() => fetchRecommendations(ProductId)} // Call fetchRecommendations on button click
                       >
                         Add to Cart
                       </button>
