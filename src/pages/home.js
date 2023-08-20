@@ -11,7 +11,7 @@ const companyInfo = 'Copyright © 2023 Snatkart';
 const suggestions = () => {
   return (
     <div>
-      <NavBar/>
+      <NavBar className = "w-full w-screen"/>
       <Suggestion/>
       <Footer links={links} companyInfo={companyInfo} />
     </div>

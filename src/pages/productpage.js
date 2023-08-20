@@ -14,7 +14,7 @@ const links = [
 const companyInfo = "Copyright © 2023 Snatkart";
 const ProductsPage = ({ product }) => {
   return (
-    <div>
+    <div className="">
       <NavBar />
       <div className="product-page">
         <ProductImages images={product.images} />
@@ -22,6 +22,7 @@ const ProductsPage = ({ product }) => {
           <ProductInformation
             name={product.name}
             description={product.description}
+            
           />
           {/* <ProductQuantity /> */}
           <AddToCartButton  productLink={product.productLink}/>

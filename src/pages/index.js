@@ -12,8 +12,8 @@ const companyInfo = "Copyright © 2023 Snatkart";
 export default function Home() {
   return (
     
-    <div>
-      <NavBar />
+    <div className="w-full">
+      <NavBar className = "w-1/2"/>
       <Login/>
       <Footer links={links} companyInfo={companyInfo} />
     </div>
