@@ -116,36 +116,7 @@
   padding: 20px;
 }
 
-.related-product-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  margin-top: 10px;
-}
 
-.related-product {
-  padding: 10px;
-  transition: transform 0.2s ease-in-out;
-}
-
-.related-product:hover {
-  transform: translateY(-5px);
-}
-
-.related-product img {
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.related-product p {
-  font-size: 16px;
-  margin: 5px 0;
-}
-
-.related-product-price {
-  font-weight: bold;
-}
 
 /* Product Page */
 .product-page {
