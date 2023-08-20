@@ -1,14 +1,11 @@
-import React from 'react';
-
-const AddToCartButton = () => {
-  const handleAddToCart = () => {
-    // Implement your add to cart logic here
-  };
-
+import React from "react";
+import Link from "next/link";
+const AddToCartButton = ({productLink}) => {
+  console.log(productLink);
   return (
-    <button className="add-to-cart-button" onClick={handleAddToCart}>
-      Add to Cart
-    </button>
+    <Link href={productLink}>
+      <button className="add-to-cart-button">View On Flipkart</button>
+    </Link>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ProductPage from "./productpage";
+import ProductPage from "./productpagea";
 import { useRouter } from "next/router";
 import Papa from "papaparse";
 const LoadingIndicator = () => {
@@ -47,14 +47,13 @@ const Product = () => {
     images = images.replace('"', "");
     images = images.replace('"', "");
     images = images.replace("[", "");
-    let productLink = productInfo ? productInfo.product_url : "";
     const id = ProductId;
-    return { id, name, images, description ,productLink};
+    return { id, name, images, description };
   }
 
   async function fetchRecommendations(ProductId) {
     try {
-      const response = await fetch("http://127.0.0.1:9010/predict", {
+      const response = await fetch("http://127.0.0.1:9001/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +86,6 @@ const Product = () => {
     const name = productInfo ? productInfo.product_name : "Unknown Product";
     let images = productInfo ? productInfo.image : "";
     let description = productInfo ? productInfo.description : "";
-    let productLink = productInfo ? productInfo.product_url : "";
     const nn = images.split(",");
     images = nn[0];
     images = images.replace('"', "");
@@ -95,7 +93,7 @@ const Product = () => {
     images = images.replace("[", "");
     await fetchRecommendations(ProductId);
 
-    return { ProductId, name, images, description ,productLink};
+    return { ProductId, name, images, description };
   }
   useEffect(() => {
     const fetchRelatedProducts = async () => {
@@ -121,7 +119,6 @@ const Product = () => {
         name: val.name,
         images: val.images,
         description: val.description,
-        productLink:val.productLink,
         relatedProducts,
       });
     }
@@ -133,7 +130,7 @@ const Product = () => {
         setVal(v);
       }
     };
-    if(id)
+
     fetchProduct();
   }, [id]);
   if (!product) {

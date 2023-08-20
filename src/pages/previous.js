@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { parse } from 'papaparse'; // A CSV parsing library
+import  Header from "../../components/Header";
+import Footer from "../../components/Footer";
+const links = [
+  { url: '/about', text: 'About' },
+  { url: '/contact', text: 'Contact' },
+  { url: '/terms', text: 'Terms of Service' },
+];
+const companyInfo = 'Copyright © 2023 Snatkart';
 
 export default function OrderHistory() {
   const [orderHistory, setOrderHistory] = useState([]);
@@ -23,6 +31,8 @@ export default function OrderHistory() {
   }, []);
 
   return (
+    <div>
+      <Header/>
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">Order History</h1>
       <table className="min-w-full divide-y divide-gray-200 text-black">
@@ -41,6 +51,8 @@ export default function OrderHistory() {
           ))}
         </tbody>
       </table>
+    </div>
+      <Footer links={links} companyInfo={companyInfo} />
     </div>
   );
 }

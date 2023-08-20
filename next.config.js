@@ -10,6 +10,10 @@ const nextConfig = {
         source: "/product/:productName",
         destination: "/product",
       },
+      {
+        source: "/producta/:productName",
+        destination: "/producta",
+      },
     ];
   },
 };

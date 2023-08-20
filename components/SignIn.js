@@ -15,20 +15,17 @@ const LoginForm = () => {
     const response = await fetch('/Feviews2.csv');
     const text = await response.text();
     const { data } = Papa.parse(text, { header: true });
-    console.log(response)
     // Verify credentials
     const user = data.find((entry) => entry.UserId === username); // Change this line
-    console.log(user)
     if (user && password == 'hello') { 
       setCookie(null, 'user', JSON.stringify(user), {
         maxAge: 3600,
-        path: '/collections',
+        path: '/home',
       });
       Cookies.set('myCookie', username);
-      console.log(Cookies.get('myCookie'))
 
 
-      router.push('/collections'); // Redirect to the dashboard or protected page
+      router.push('/home'); // Redirect to the dashboard or protected page
     } else {
       
       alert('Invalid username or password.');

@@ -31,30 +31,19 @@
 .product-description {
   color: #666;
   padding-left: 0%;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
-.product-price {
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  padding-left: 0%;
-  padding-top: 2%;
-}
 
-.product-rating {
-  color: #f39c12;
-  margin-bottom: 10px;
-  padding-left: 0%;
-  padding-top: 2%;
-}
 /* AddToCartButton */
 .add-to-cart-button {
   background-color: rgb(221, 219, 219);
   color: black;
-  /* margin-left: auto; */
+  margin-left: auto;
+  margin-right: auto;
   padding-left: 0%;
   padding-top: auto;
+  
   padding-bottom: 0%;
   border: none;
   width: 200px;
@@ -67,55 +56,31 @@
 .add-to-cart-button:hover {
   background-color: #3c7ead;
 }
-/* ProductQuantity */
-.product-quantity {
-  margin-top: 20px;
-  margin-bottom: 25px;
-  font-size: 24px;
-  padding-left: 0%;
-  display: flex;
-  align-items: center;
-}
-
-.quantity-controls {
-  display: flex;
-  padding-left: 5%;
-
-  align-items: center;
-}
-
-.decrement-button,
-.increment-button {
-  background-color: rgb(221, 219, 219);
-  color:black;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.quantity {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0 10px;
-}
-
-.increment-button {
-  margin-left: 10px;
-}
-
-.decrement-button:hover,
-.increment-button:hover {
-  background-color: #3c7ead;
-
-}
 /* Related Products */
+.recommend{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #ccc 0.5px solid;
+}
+.recommendation{
+  margin:auto;
+  display: block;
+  object-fit: contain;
+  height: 80px;
+}
 .related-products {
   margin-top: 20px;
   padding: 20px;
 }
-
+.slick-slide img {
+  height: 200px;
+  display: block;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+}
 
 
 /* Product Page */

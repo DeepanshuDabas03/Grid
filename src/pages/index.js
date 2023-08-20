@@ -2,24 +2,18 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import NavBar from "../../components/Header";
 import Footer from "../../components/Footer";
-import Previous from './previous.js'
-import Collections from "../../components/collections";
-import SuggestItem from "../../components/suggestion";
 import Login from "./login.js"
-import { useRouter } from "next/router";
-const inter = Inter({ subsets: ["latin"] });
 const links = [
   { url: "/about", text: "About" },
   { url: "/contact", text: "Contact" },
   { url: "/terms", text: "Terms of Service" },
 ];
-const companyInfo = "Copyright © 2023 Your Company";
+const companyInfo = "Copyright © 2023 Snatkart";
 export default function Home() {
   return (
     
     <div>
       <NavBar />
-      {/* <Collections /> */}
       <Login/>
       <Footer links={links} companyInfo={companyInfo} />
     </div>
