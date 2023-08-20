@@ -3,6 +3,7 @@ import Papa from 'papaparse';
 import { useRouter } from 'next/router';
 import { setCookie } from 'nookies';
 import Cookies from 'js-cookie';
+import Image from 'next/image'
 import Typewriter from 'typewriter-effect';
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -35,27 +36,30 @@ const LoginForm = () => {
 
   return (
     <div className="flex h-screen">
-      {/* Left Side */}
-      
-      <div className="w-2/3 bg-blue-700 text-white p-12 flex flex-col justify-center items-center">
-        <div className="text-4xl font-bold mb-4">
-        <Typewriter 
-          options={{
-            strings: ["Internship", 'Lagwado'],
-            autoStart: true,
-            loop: true,
-          }}
-        />
-        </div>
-        <p className="text-lg text-center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor bibendum est,
-          ultrices sodales enim efficitur id.
-        </p>
-      </div>
+  <div className="w-3/4 bg-[#12665F] text-white p-12 flex flex-col justify-center h-screen items-center">
+    {/* Big heading with margin-top */}
+    <h1 className="text-7xl mb-20  flex justify-top">Welcome to Our ChoiceCart.AI</h1>
+
+    {/* Typewriter effect */}
+    <div className="text-4xl font-bold mb-4">
+      <Typewriter 
+        options={{
+          strings: ["Want Solution?", 'Have Recommendation'],
+          autoStart: true,
+          loop: true,
+        }}
+      />
+    </div>
+
+    <p className="text-lg text-center">
+      get access to your order, wshist and Recommendations
+    </p>
+  </div>
       
       {/* Right Side */}
-      <div className="w-1/3 flex text-black justify-center items-center">
-        <form onSubmit={handleSubmit} className="grid grid-cols-1">
+
+      <div className="w-1/4 flex flex-col text-black justify-center bg-white h-screen items-center">
+  <form onSubmit={handleSubmit} className="grid grid-cols-1">
           <div className="mb-4">
             <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">
               Username
@@ -83,12 +87,20 @@ const LoginForm = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-black hover:text-blue-500 text-white font-bold py-2 px-6 rounded-lg focus:shadow-outline"
+              className="bg-black hover:bg-black hover:text-blue-500 text-white font-bold py-2 px-6 rounded-lg focus:shadow-outline"
             >
               Login
             </button>
           </div>
         </form>
+        <div className='grid grid-col-1 mt-10'>
+        <Image
+        src = "/LAP.jpg"
+        width = {400}
+        height={100}
+        
+        />
+        </div>
       </div>
     </div>
   );

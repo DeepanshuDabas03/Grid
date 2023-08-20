@@ -1,147 +1,101 @@
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
-const navigation = [
-  { name: "Home", href: "/home", img: "/home-icon.svg" },
-  {name: "Past Orders", href:"/previous",  img: "/orders.svg"},
-];
+import Head from 'next/head';
+import Link from 'next/link';
+import { useState } from 'react';
+import Image from 'next/image'
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-export default function Example() {
+export default function Home() {
+  const [navbar, setNavbar] = useState(false);
   return (
-    <Disclosure as="nav" className="bg-black-800">
-      {({ open }) => (
-        <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-black-400 hover:bg-black-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="absolute -inset-0.5" />
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
-              </div>
-              <div className="flex flex-1 items-center justify-center  sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <Link href="/home">
-                  <img
-                    className="h-10 w-auto"
-                    src="/flipkart.jpg"
-                    alt="Your Company"
-                  />
-                  </Link>
-                </div>
-                <div className="container" id="searchbar">
-                  <form className="d-flex " role="search">
-                    <input
-                      className="form-control me-2"
-                      type="search"
-                      placeholder="Search for products and more"
-                    />
-                    <button
-                      className="btn btn-outline-success"
-                      type="submit"
-                    ></button>
-                  </form>
-                </div>
-                <div className="hidden sm:ml-6 sm:flex justify-center items-center">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-black-900 text-white"
-                            : "text-black-300 hover:bg-black-700 hover:text-white",
-                          "rounded-md px-2 py-2 text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        <div className="flex items-center">
-                          <img id="abcd"  src={item.img} alt="" />
-                          <span className="ml-3">{item.name}</span>
-                          
-                        </div>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              {/* Profile dropdown */}
-              <Menu
-                as="div"
-                className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end "
-              >
-                <div>
-                  <Menu.Button className="relative flex rounded-full bg-black-800 text-sm ">
-                    <span className="sr-only">Open user menu</span>
-                    <img className="h-8 w-12 " src="/person.svg" alt="" />
-                    <img className="h-6 w-6 " src="/chevron-down.svg" alt="" />
-                  </Menu.Button>
-                </div>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
+    <div>
+      <Head>
+        <title>Create Next Responsive Navbar With Tailwind CSS</title>
+        <meta
+          name="description"
+          content="Create Next JS Responsive Menu with Tailwind CSS"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <nav className="w-full bg-white text-black shadow">
+        <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+          <div>
+            <div className="flex items-center py-3 md:py-5 md:block">
+              <Image
+                src= "/cart.jpg"
+                width={100}
+                height={100}
+              />
+              
+              <div className="md:hidden">
+                <button
+                  className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                  onClick={() => setNavbar(!navbar)}
                 >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-black py-1 shadow-lg ring-1 ring-white ring-opacity-5 focus:outline-none">
-                
-                    
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          href="/"
-                          className={classNames(
-                            active ? "bg-black-100" : "",
-                            "block px-4 py-2 text-sm text-black-700"
-                          )}
-                        >
-                          Sign out
-                        </a>
-                      )}
-                    </Menu.Item>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
+                  {navbar ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6 text-white"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    </svg>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
-
-          <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-black-900 text-white"
-                      : "text-black-300 hover:bg-black-700 hover:text-white",
-                    "block rounded-md px-3 py-2 text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
+          <div>
+            <div
+              className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+                navbar ? 'block' : 'hidden'
+              }`}
+            >
+              <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+                <li className="text-black">
+                  <Link href="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="text-black">
+                  <Link href="/blogs">
+                    Blogs
+                  </Link>
+                </li>
+                <li className="text-black">
+                  <Link href="/about">
+                    About US
+                  </Link>
+                </li>
+                <li className="text-black">
+                  <Link href="/contact">
+                    Contact US
+                  </Link>
+                </li>
+              </ul>
             </div>
-          </Disclosure.Panel>
-        </>
-      )}
-    </Disclosure>
+          </div>
+        </div>
+      </nav>
+      
+    </div>
   );
 }

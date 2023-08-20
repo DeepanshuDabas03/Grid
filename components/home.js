@@ -141,10 +141,12 @@ export default function Home() {
   }, [relatedProducts]);
 
   const settings = {
+    centerMode: true,
+  centerPadding: '90px',
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true, // Auto-advance slides
     autoplaySpeed: 2000, // Time between slide transitions (in milliseconds)
@@ -152,7 +154,7 @@ export default function Home() {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 2,centerMode: true,
         },
       },
       {
@@ -165,9 +167,9 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-black py-8">
-      <div className="max-w-7xl m-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-white mb-8">
+    <div className="bg-white text-black py-8 w-screen">
+      <div className="m-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold rounded-3xl bg-yellow-300 text-black flex justify-center mt-8 mb-8">
           Top N Recommendations
         </h1>
         {isLoading ? (
@@ -181,8 +183,8 @@ export default function Home() {
                 productLink,
               }) => (
                 <div key={ProductId} className="px-2">
-                  <div className="bg-blue-900 p-4 rounded-lg shadow-md">
-                    <h3 className="text-lg font-semibold text-white mb-2">
+                  <div className="bg-[#1D41FF] text-white mx-10 p-4 rounded-lg shadow-md">
+                    <h3 className="text-lg flex justify-center  font-semibold  mb-2">
                       {productName}{" "}
                     </h3>
 
@@ -194,10 +196,10 @@ export default function Home() {
                       height={500}
                       style={{ maxHeight: "150px", objectFit: "cover" }}
                     />
-                    <p className="font-bold mt-2 text-white">
+                    <p className="font-bold flex justify-center  mt-2 ">
                       Rating: {Rating}
                     </p>
-                    <div className="mt-4 space-x-2">
+                    <div className="mt-4 flex justify-center space-x-2">
                       <Link
                         href={{
                           pathname: "/product",
@@ -205,12 +207,12 @@ export default function Home() {
                         }}
                         as={`/product?name=${productName} &id=${ProductId}`}
                       >
-                        <button className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">
+                        <button className="px-4 py-2 bg-gray-800  rounded hover:bg-gray-700">
                           View
                         </button>
                       </Link>
                       <Link href={productLink}>
-                        <button className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">
+                        <button className="px-4 py-2 bg-gray-800  rounded hover:bg-gray-700">
                           View on Flipkart
                         </button>
                       </Link>
@@ -221,10 +223,10 @@ export default function Home() {
             )}
           </Slider>
         ) : (
-          <p className="text-white">Loading...</p>
+          <p className="">Loading...</p>
         )}
         <div>
-          <h2 className="text-3xl font-bold text-white mt-8 mb-8">
+          <h2 className="text-3xl rounded-3xl font-bold bg-yellow-300 text-black flex justify-center mt-8 mb-8">
             Top Picks For You
           </h2>
           {isloading1 ? (
@@ -232,8 +234,8 @@ export default function Home() {
               {relatedProducts.map(
                 ({ ProductId, productName, productImage, productLink }) => (
                   <div key={ProductId} className="px-2">
-                    <div className="bg-blue-900 p-4 rounded-lg shadow-md">
-                      <h3 className="text-lg font-semibold text-white mb-2">
+                    <div className="bg-[#12665F] text-white mx-10 p-4 rounded-lg shadow-md">
+                      <h3 className="text-lg font-semibold flex justify-center mb-2">
                         {productName}{" "}
                       </h3>
 
@@ -246,19 +248,19 @@ export default function Home() {
                         style={{ maxHeight: "150px", objectFit: "cover" }}
                       />
 
-                      <div className="mt-4 space-x-2">
+                      <div className="mt-4 flex justify-center space-x-2">
                         <Link
                           href={{
                             pathname: "/product",
                           }}
                           as={`/product?name=${productName} &id=${ProductId}`}
                         >
-                          <button className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">
+                          <button className="px-4 py-2 bg-gray-800  rounded hover:bg-gray-700">
                             View
                           </button>
                         </Link>
                         <Link href={productLink}>
-                          <button className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">
+                          <button className="px-4 py-2 bg-gray-800  rounded hover:bg-gray-700">
                             View on Flipkart
                           </button>
                         </Link>
@@ -269,7 +271,7 @@ export default function Home() {
               )}
             </Slider>
           ) : (
-            <p className="text-white">Loading...</p>
+            <p className="">Loading...</p>
           )}
         </div>
       </div>
