@@ -6,7 +6,6 @@
   height: 350px;
   object-fit: contain;
   background-color: white;
-  border: 1px solid #ccc;
   margin-left: 25%;
   margin-top:50px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -87,7 +86,8 @@
 .product-page {
   display: flex;
   padding: 20px;
-  gap : 10%;
+  gap: 20px; /* Adjust the spacing as needed */
+  justify-content: center; /* Center the cards horizontally */
   margin-left: auto;
   margin-right: auto;
 }
