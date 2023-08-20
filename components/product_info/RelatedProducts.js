@@ -10,6 +10,7 @@ const RelatedProducts = ({ relatedProducts }) => {
     dots: true,
     infinite: true,
     speed: 500,
+    center:true,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
@@ -32,11 +33,11 @@ const RelatedProducts = ({ relatedProducts }) => {
 
   return (
     <div className="related-products">
-      <h2 className="text-lg font-semibold mb-3">Related Products</h2>
-      <Slider {...settings}>
+      <h2 className="text-4xl flex justify-center  font-semibold mb-3">Related Products</h2>
+      <Slider {...settings} className="bg-[#390449]  mx-10 rounded-xl">
         {relatedProducts.map((Product) => (
           <div key={Product.id} className="recommend">
-            <div className="image-container">
+            <div className="image-container pt-5">
               <Image
                 src={Product.images}
                 alt={Product.name}
@@ -48,7 +49,7 @@ const RelatedProducts = ({ relatedProducts }) => {
               href={Product.productLink}
             >
               <div className="recommendation">
-                <h4 className="text-md font-semibold mb-1">{Product.name} </h4>
+                <h4 className="text-md text-white pt-10 flex justify-center font-semibold mb-1">{Product.name} </h4>
               </div>
             </Link>
           </div>
@@ -60,13 +61,13 @@ const RelatedProducts = ({ relatedProducts }) => {
           width: 200px;
           height: 200px;
           object-fit: contain;
-          background-color: white;
-          border: 1px solid #ccc;
+          
+          
           margin-left: auto;
           margin-right: auto;
           margin-top: auto;
           margin-bottom: auto;
-          borderradius: "25%";
+          
           // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
       `}</style>

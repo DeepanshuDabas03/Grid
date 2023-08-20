@@ -4,7 +4,7 @@ const AddToCartButton = ({productLink}) => {
   console.log(productLink);
   return (
     <Link href={productLink}>
-      <button className="add-to-cart-button">View On Flipkart</button>
+      <button className="rounded-3xl text-white p-5 bg-black ">View On Flipkart</button>
     </Link>
   );
 };
