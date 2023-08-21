@@ -1,7 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
-Install the zip from github and then extract it
+Install the zip from github and then extract it, 
 Open a terminal in grid-master
 First, run the following to install npm dependencies
 ```bash
@@ -29,6 +29,26 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+Login with any of the test userId's
+
+```bash
+A1I85Y08VRZ32Q
+or
+A11OTLEDSW8ZXD
+or
+A2YHXAZLCLDT8D
+or
+A31N6KB160O508
+```
+
+Password for all users
+
+```bash
+hello
+```
+
+Now you're good to explore the application. Happy Recommending!!
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
