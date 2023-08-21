@@ -1,8 +1,24 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+Install the zip from github and then extract it
+Open a terminal in grid-master
+First, run the following to install npm dependencies
+```bash
+npm install
+```
+Next, change the cwd by:
+```bash
+cd .\public\
+```
 
-First, run the development server:
+Now, run the python file try2.py by:
+```bash
+python .\try2.py
+```
+
+Next open another terminal with grid-master as cwd and then
+Run the development server:
 
 ```bash
 npm run dev
