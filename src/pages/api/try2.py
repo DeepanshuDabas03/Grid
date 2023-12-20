@@ -7,8 +7,8 @@ import numpy as np
 app = Flask(__name__)
 CORS(app)  # Apply CORS to the app
 global order_history
-order_history = pd.read_csv("./public/OrderHistory.csv")
-products_list = pd.read_csv("./public/ProductsList.csv")
+order_history = pd.read_csv("public/OrderHistory.csv")
+products_list = pd.read_csv("public/ProductsList.csv")
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.get_json()
