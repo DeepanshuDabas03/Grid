@@ -54,7 +54,7 @@ const Product = () => {
 
   async function fetchRecommendations(ProductId) {
     try {
-      const response = await fetch("http://127.0.0.1:9010/predict", {
+      const response = await fetch('/api/predict', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

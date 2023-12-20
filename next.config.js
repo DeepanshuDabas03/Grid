@@ -14,6 +14,10 @@ const nextConfig = {
         source: "/producta/:productName",
         destination: "/producta",
       },
+      {
+        source: '/api/:path*',
+        destination: 'http://127.0.0.1:9010/:path*',  // Proxy to Flask server
+      },
     ];
   },
 };
