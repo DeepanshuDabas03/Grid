@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "flask-dev": "FLASK_DEBUG=1 python3 -m flask --app src/pages/api/try2 run -p 9010 --reload",
+    "flask-dev": "FLASK_DEBUG=1 python3 -m flask --app src/pages/api/index run -p 9010 --reload",
     "next-dev": "next dev",
     "dev": "concurrently \"npm run next-dev\" \"npm run flask-dev\"",
     "start": "next start",
