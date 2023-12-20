@@ -16,7 +16,10 @@ const nextConfig = {
       },
       {
         source: '/api/:path*',
-        destination: 'http://127.0.0.1:9010/:path*',  // Proxy to Flask server
+        destination:
+          process.env.NODE_ENV === 'development'
+            ? 'http://127.0.0.1:9010/:path*'
+            : '/api/',
       },
     ];
   },
