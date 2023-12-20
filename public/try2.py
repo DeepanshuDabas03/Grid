@@ -42,8 +42,7 @@ def predict():
 
 
     recommendations = get_recommendations(product_id)
-   
-
+    recommendations = [str(id) for id in recommendations]
     return jsonify(recommendations)
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=9010, debug=True)

@@ -25,7 +25,7 @@ const Product = () => {
   const [isLoading, setIsLoading] = useState(false); // Add isLoading state
   const [val, setVal] = useState(null);
   async function recProduct(ProductId) {
-    const response = await fetch("/ProductsList.csv");
+    const response = await fetch("ProductsList.csv");
     const csvText = await response.text();
     const parsedCSV = Papa.parse(csvText, {
       header: true,
@@ -70,7 +70,7 @@ const Product = () => {
   }
 
   async function getProduct(ProductId) {
-    const response = await fetch("/ProductsList.csv");
+    const response = await fetch("ProductsList.csv");
     const csvText = await response.text();
     const parsedCSV = Papa.parse(csvText, {
       header: true,
