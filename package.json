@@ -6,7 +6,7 @@
     "flask-dev": "FLASK_DEBUG=1 python3 -m flask --app src/pages/api/index run -p 9010 --reload",
     "next-dev": "next dev",
     "dev": "concurrently \"npm run next-dev\" \"npm run flask-dev\"",
-    "start": "next start",
+    "start": "concurrently \"next start\" \"npm run flask-dev\"",
     "lint": "next lint"
   },
   "dependencies": {
