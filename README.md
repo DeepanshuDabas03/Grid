@@ -75,10 +75,10 @@ Feel free to customize and enhance the project. Here are some points to get you 
   - The project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load the Inter font, a custom Google Font.
 
 For feedback and contributions, visit the [Next.js GitHub repository](https://github.com/vercel/next.js/).
-##Contact:
+# Contact:
 [Deepanshu](deepanshu21249@iiitd.ac.in), [Chaitanya](chaitanya21248@iiitd.ac.in), [Divyansh](divyansh21252@iiitd.ac.in)
 
-##Thanks
+# Thanks
 Enjoy using the Flipkart Grid Product Recommendation System! If you have any questions or suggestions, feel free to reach out. Happy Recommending!
 ```
 
